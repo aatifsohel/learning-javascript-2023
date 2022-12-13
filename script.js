@@ -17,3 +17,14 @@ let PI = 3.14;
 
 let myFirstJob = "Programmer";
 let myCurrentJob = "Teacher";
+
+// Dynamic Typing
+
+let year;
+console.log(year);
+console.log(typeof year);
+
+year = 1999;
+console.log(typeof year);
+
+console.log(typeof null);
