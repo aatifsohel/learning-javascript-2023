@@ -43,32 +43,34 @@
 // job = 'teacher';
 
 
-// OPERATORS in Javascript
+// // OPERATORS in Javascript
 
-const currentYear = 2022;
-const ageAatif = currentYear - 1999;
-const ageJonas = currentYear - 1991;
-console.log(ageAatif, ageJonas);
+// const currentYear = 2022;
+// const ageAatif = currentYear - 1999;
+// const ageJonas = currentYear - 1991;
+// console.log(ageAatif, ageJonas);
 
-console.log(ageAatif * 2, ageJonas / 10, 2 ** 3);
+// console.log(ageAatif * 2, ageJonas / 10, 2 ** 3);
 
-const firstName = "Aatif";
-const lastName = "Sohel";
-console.log(firstName + ' ' + lastName);
+// const firstName = "Aatif";
+// const lastName = "Sohel";
+// console.log(firstName + ' ' + lastName);
 
-// Assignment Operators
+// // Assignment Operators
 
-let x = 10;
-x += 10;
-x *= 4;
-x++;
-x--;
-x--;
-console.log(x);
+// let x = 10;
+// x += 10;
+// x *= 4;
+// x++;
+// x--;
+// x--;
+// console.log(x);
 
 // Comparison Operators
 
 console.log(ageAatif < ageJonas);
 console.log(ageAatif >= 18);
 
-console.log(currentYear - 1999 > currentYear > 1991)
+console.log(currentYear - 1999 > currentYear > 1991);
+
+
