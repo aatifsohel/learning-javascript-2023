@@ -68,9 +68,29 @@
 
 // Comparison Operators
 
-console.log(ageAatif < ageJonas);
-console.log(ageAatif >= 18);
+// console.log(ageAatif < ageJonas);
+// console.log(ageAatif >= 18);
 
-console.log(currentYear - 1999 > currentYear > 1991);
+// console.log(currentYear - 1999 > currentYear > 1991);
 
 
+// Test 01
+
+// Data 01
+
+const heightMark = 1.69;
+const weightMark = 78;
+
+const heightJohn = 1.95;
+const weightJohn = 95;
+
+
+const bmiOfMark = weightMark / heightMark ** 2;
+console.log(bmiOfMark);
+
+const bmiOfJohn = weightJohn / heightJohn ** 2;
+console.log(bmiOfJohn);
+
+const markHigherBmi = bmiOfMark > bmiOfJohn;
+
+console.log(bmiOfMark, bmiOfJohn, markHigherBmi);
