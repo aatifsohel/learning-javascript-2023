@@ -78,19 +78,42 @@
 
 // Data 01
 
-const heightMark = 1.69;
-const weightMark = 78;
+// const heightMark = 1.69;
+// const weightMark = 78;
 
-const heightJohn = 1.95;
-const weightJohn = 95;
+// const heightJohn = 1.95;
+// const weightJohn = 95;
 
 
-const bmiOfMark = weightMark / heightMark ** 2;
-console.log(bmiOfMark);
+// const bmiOfMark = weightMark / heightMark ** 2;
+// console.log(bmiOfMark);
 
-const bmiOfJohn = weightJohn / heightJohn ** 2;
-console.log(bmiOfJohn);
+// const bmiOfJohn = weightJohn / heightJohn ** 2;
+// console.log(bmiOfJohn);
 
-const markHigherBmi = bmiOfMark > bmiOfJohn;
+// const markHigherBmi = bmiOfMark > bmiOfJohn;
 
-console.log(bmiOfMark, bmiOfJohn, markHigherBmi);
+// console.log(bmiOfMark, bmiOfJohn, markHigherBmi);
+
+
+// if / else statement
+
+const age = 15;
+
+if (age >= 18) {
+    console.log('Sarah can start driving license.');
+} else {
+    const yearsleft = 18 - age;
+    console.log(`Sarah is too young. Wait another ${yearsleft} years :`);
+}
+
+const birthYear = 1999;
+let century;
+
+if (birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+
+console.log(century);
