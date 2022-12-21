@@ -78,17 +78,17 @@
 
 // Data 01
 
-const heightMark = 1.69;
-const weightMark = 78;
+// const heightMark = 1.69;
+// const weightMark = 78;
 
-const heightJohn = 1.95;
-const weightJohn = 95;
+// const heightJohn = 1.95;
+// const weightJohn = 95;
 
 
-const bmiOfMark = weightMark / heightMark ** 2;
+// const bmiOfMark = weightMark / heightMark ** 2;
 // console.log(bmiOfMark);
 
-const bmiOfJohn = weightJohn / heightJohn ** 2;
+// const bmiOfJohn = weightJohn / heightJohn ** 2;
 // console.log(bmiOfJohn);
 
 // const markHigherBmi = bmiOfMark > bmiOfJohn;
@@ -120,9 +120,34 @@ const bmiOfJohn = weightJohn / heightJohn ** 2;
 
 // Challenge 02
 
-if (bmiOfMark > bmiOfJohn) {
-    console.log(`Mark's BMI (${bmiOfMark}) is higher than John's (${bmiOfJohn})!`)
+// if (bmiOfMark > bmiOfJohn) {
+//     console.log(`Mark's BMI (${bmiOfMark}) is higher than John's (${bmiOfJohn})!`)
+// } else {
+//     console.log(`John's BMI (${bmiOfJohn}) is higher than Mark's (${bmiOfMark})!`)
+// }
+
+
+
+const hasDriverLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriverLicense && hasGoodVision);
+console.log(hasDriverLicense || hasGoodVision);
+console.log(!hasDriverLicense);
+
+// if (hasDriverLicense && hasGoodVision) {
+//     console.log('Sarah is able to drive!')
+// } else {
+//     console.log('Someone else should drive...')
+// }
+
+const isTired = false; // C
+console.log(hasDriverLicense && hasGoodVision && isTired);
+
+
+if (hasDriverLicense && hasGoodVision && !isTired) {
+    console.log('Sarah is able to drive!')
 } else {
-    console.log(`John's BMI (${bmiOfJohn}) is higher than Mark's (${bmiOfMark})!`)
+    console.log('Someone else should drive...')
 }
 
