@@ -128,12 +128,12 @@
 
 
 
-const hasDriverLicense = true; // A
-const hasGoodVision = true; // B
+// const hasDriverLicense = true; // A
+// const hasGoodVision = true; // B
 
-console.log(hasDriverLicense && hasGoodVision);
-console.log(hasDriverLicense || hasGoodVision);
-console.log(!hasDriverLicense);
+// console.log(hasDriverLicense && hasGoodVision);
+// console.log(hasDriverLicense || hasGoodVision);
+// console.log(!hasDriverLicense);
 
 // if (hasDriverLicense && hasGoodVision) {
 //     console.log('Sarah is able to drive!')
@@ -141,13 +141,74 @@ console.log(!hasDriverLicense);
 //     console.log('Someone else should drive...')
 // }
 
-const isTired = false; // C
-console.log(hasDriverLicense && hasGoodVision && isTired);
+// const isTired = false; // C
+// console.log(hasDriverLicense && hasGoodVision && isTired);
 
 
-if (hasDriverLicense && hasGoodVision && !isTired) {
-    console.log('Sarah is able to drive!')
+// if (hasDriverLicense && hasGoodVision && !isTired) {
+//     console.log('Sarah is able to drive!')
+// } else {
+//     console.log('Someone else should drive...')
+// }
+
+
+// Challenge 03
+///////////////
+
+// const teamDolphinsScore = 96 + 108 + 89;
+// const teamKoalasScore = 88 + 91 + 110;
+
+// const teamDolphinsAvgScore = teamDolphinsScore / 3;
+// const teamKoalasAvgScore = teamKoalasScore / 3;
+
+// console.log(teamDolphinsAvgScore, teamKoalasAvgScore);
+// console.log(teamDolphinsScore, teamKoalasScore);
+
+// if (teamDolphinsAvgScore > teamKoalasAvgScore) {
+//     console.log(`Team Dolphins is the winner with score ${teamDolphinsAvgScore}`);
+// } else if (teamKoalasAvgScore > teamDolphinsAvgScore) {
+//     console.log(`Team Koalas is the winner with score ${teamKoalasAvgScore}`);
+// } else {
+//     console.log('DRAW!!!')
+// }
+
+// Challenge 03 - Bonus 1
+
+// const teamDolphinsScore = 97 + 112 + 101;
+// const teamKoalasScore = 109 + 95 + 123;
+
+// const teamDolphinsAvgScore = teamDolphinsScore / 3;
+// const teamKoalasAvgScore = teamKoalasScore / 3;
+
+// console.log(teamDolphinsAvgScore, teamKoalasAvgScore);
+// console.log(teamDolphinsScore, teamKoalasScore);
+
+// if ((teamDolphinsAvgScore > teamKoalasAvgScore) && (teamDolphinsAvgScore >= 100)) {
+//     console.log(`Team Dolphins is the winner with score ${teamDolphinsAvgScore}`);
+// } else if ((teamKoalasAvgScore > teamDolphinsAvgScore) && (teamKoalasAvgScore >= 100)) {
+//     console.log(`Team Koalas is the winner with score ${teamKoalasAvgScore}`);
+// } else {
+//     console.log('DRAW!!!');
+// }
+
+// Challenge 03 - Bonus 2
+
+
+const teamDolphinsScore = 97 + 112 + 101;
+const teamKoalasScore = 109 + 95 + 106;
+
+const teamDolphinsAvgScore = teamDolphinsScore / 3;
+const teamKoalasAvgScore = teamKoalasScore / 3;
+
+console.log(teamDolphinsAvgScore, teamKoalasAvgScore);
+console.log(teamDolphinsScore, teamKoalasScore);
+
+if ((teamDolphinsAvgScore > teamKoalasAvgScore) && (teamDolphinsAvgScore >= 100)) {
+    console.log(`Team Dolphins is the winner with score ${teamDolphinsAvgScore}`);
+} else if ((teamKoalasAvgScore > teamDolphinsAvgScore) && (teamKoalasAvgScore >= 100)) {
+    console.log(`Team Koalas is the winner with score ${teamKoalasAvgScore}`);
 } else {
-    console.log('Someone else should drive...')
+    console.log('DRAW!!!');
 }
+
 
