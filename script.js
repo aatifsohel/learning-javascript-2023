@@ -229,19 +229,27 @@
 
 // Conditional Operator (ternary)
 
-const age = 23;
-age >= 18 ? console.log('I love writing code 😍') : console.log('I also like playing computer games ♥');
+// const age = 23;
+// age >= 18 ? console.log('I love writing code 😍') : console.log('I also like playing computer games ♥');
 
-const drink = age >= 18 ? 'wine' : 'water';
-console.log(drink);
+// const drink = age >= 18 ? 'wine' : 'water';
+// console.log(drink);
 
-let drink2;
-if (age >= 18) {
-    drink2 = 'wine'
-} else {
-    drink2 = 'water'
-}
-console.log(drink2)
+// let drink2;
+// if (age >= 18) {
+//     drink2 = 'wine'
+// } else {
+//     drink2 = 'water'
+// }
+// console.log(drink2)
 
-console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
+// console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
 
+
+// Challenge 04 - Conditional Ternary Operator
+
+const bill = 40;
+// const tip = 50 <= bill <= 300 ? console.log(`The bill was ${bill}, the tip was ${bill * (15 / 100)}, and the total value ${bill + bill * (15 / 100)}`) : console.log(`The bill was ${bill}, the tip was ${bill * (20 / 100)}, and the total value ${bill + bill * (20 / 100)}`);
+const tip = 300 >= bill >= 50 ? bill * 0.15 : bill * 0.2;
+
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
