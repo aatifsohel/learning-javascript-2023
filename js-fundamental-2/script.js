@@ -199,7 +199,7 @@ console.log(friends.includes('Bob'));
 */
 
 // Challenge 02 - Arrays
-
+/*
 const calcTip = function (billValue) {
     const tip = 300 >= billValue >= 50 ? billValue * 0.15 : billValue * 0.2;
     return tip;
@@ -219,7 +219,17 @@ const total3 = tips[2] + bills[2];
 
 const total = [total1, total2, total3];
 console.log(total)
+*/
 
+// Objects
+
+const john = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 2037 - 1991,
+    job: 'Unknown',
+    friends: ['Mick', 'Dan', 'Joe']
+}
 
 
 
