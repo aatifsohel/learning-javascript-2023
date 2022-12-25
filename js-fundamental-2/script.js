@@ -152,7 +152,7 @@ const john = [firstName, 'Doe', 2037 - 1991, 'teacher', friends];
 console.log(john);
 console.log(john.length);
 
-// Exercise 
+// Exercise
 
 const calcAge = function (birthYear) {
     return 2037 - birthYear;
@@ -168,10 +168,10 @@ console.log(age);
 */
 
 // Array Methods
-
+/*
 const friends = ['Michael', 'Steven', 'Peter'];
 
-// Add elements 
+// Add elements
 const newLength = friends.push('Jay');
 console.log(friends);
 console.log(newLength);
@@ -196,3 +196,31 @@ console.log(friends.indexOf('Bob'));
 
 console.log(friends.includes('Steven'));
 console.log(friends.includes('Bob'));
+*/
+
+// Challenge 02 - Arrays
+
+const calcTip = function (billValue) {
+    const tip = 300 >= billValue >= 50 ? billValue * 0.15 : billValue * 0.2;
+    return tip;
+}
+
+// console.log(calcTip(100));
+
+const bills = [125, 555, 44];
+console.log(bills);
+
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+console.log(tips);
+
+const total1 = tips[0] + bills[0];
+const total2 = tips[1] + bills[1];
+const total3 = tips[2] + bills[2];
+
+const total = [total1, total2, total3];
+console.log(total)
+
+
+
+
+
