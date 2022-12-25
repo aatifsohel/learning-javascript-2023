@@ -126,6 +126,9 @@ const checkWinner = (avgDolphins, avgKoalas) => {
 checkWinner(scoreDolphins, scoreKoalas);
 */
 
+// Arrays
+
+/*
 const friend1 = 'Michael';
 const friend2 = 'Steven';
 const friend3 = 'Peter';
@@ -162,3 +165,34 @@ const years = [1990, 1984, 2008, 2020, 2018];
 
 const age = calcAge(years[0]);
 console.log(age);
+*/
+
+// Array Methods
+
+const friends = ['Michael', 'Steven', 'Peter'];
+
+// Add elements 
+const newLength = friends.push('Jay');
+console.log(friends);
+console.log(newLength);
+
+friends.unshift('John');
+console.log(friends);
+
+// removing elements
+friends.pop(); //last
+const popped = friends.pop();
+console.log(popped);
+console.log(friends);
+
+friends.shift();
+console.log(friends);
+
+// position / location of array element
+console.log(friends.indexOf('Steven'));
+console.log(friends.indexOf('Bob'));
+
+// checking if element is in the array
+
+console.log(friends.includes('Steven'));
+console.log(friends.includes('Bob'));
