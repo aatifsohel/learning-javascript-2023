@@ -222,7 +222,7 @@ console.log(total)
 */
 
 // Objects
-
+/*
 const john = {
     firstName: 'John',
     lastName: 'Doe',
@@ -260,5 +260,41 @@ john['twitter'] = '@johndoe';
 // John has 3 friends, and his best friend is called Mick!
 
 console.log(`${john.firstName} has ${john.friends.length} friends, and his best friend is ${john.friends[0]}`);
+*/
 
+// Object Methods
+
+const john = {
+    firstName: 'John',
+    lastName: 'Doe',
+    birthYear: 1991,
+    job: 'Unknown',
+    friends: ['Mick', 'Dan', 'Joe'],
+    hasDriversLicense: true,
+
+    // calcAge: function (birthYear) {
+    //     return 2037 - birthYear;
+    // }
+
+    // calcAge: function () {
+    //     return 2037 - this.birthYear;
+    // }
+
+    calcAge: function () {
+        this.age = 2037 - this.birthYear;
+        return this.age;
+    },
+
+    summary: function () {
+        return `${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license`;
+    }
+}
+
+console.log(john.calcAge());
+
+console.log(john.age);
+
+// Challenge 
+
+console.log(john.summary());
 
