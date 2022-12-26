@@ -263,7 +263,7 @@ console.log(`${john.firstName} has ${john.friends.length} friends, and his best 
 */
 
 // Object Methods
-
+/*
 const john = {
     firstName: 'John',
     lastName: 'Doe',
@@ -297,4 +297,37 @@ console.log(john.age);
 // Challenge 
 
 console.log(john.summary());
+*/
 
+// Challenge 03 - Objects
+
+const mark = {
+    fullName: 'Mark Miller',
+    weight: 78,
+    height: 1.69,
+
+    calcBMI: function () {
+        this.bmi = this.weight / this.height ** 2;
+        return this.bmi;
+    }
+}
+
+const john = {
+    fullName: 'John Smith',
+    weight: 92,
+    height: 1.95,
+
+    calcBMI: function () {
+        this.bmi = this.weight / this.height ** 2;
+        return this.bmi;
+    }
+}
+
+console.log(mark.calcBMI());
+console.log(john.calcBMI());
+
+if (john.bmi > mark.bmi) {
+    console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})`);
+} else {
+    console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})`);
+}
