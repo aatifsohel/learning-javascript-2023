@@ -231,6 +231,34 @@ const john = {
     friends: ['Mick', 'Dan', 'Joe']
 }
 
+// Retrieving data
+console.log(john);
 
+console.log(john.lastName);
+
+console.log(john['lastName']);
+
+const nameKey = 'Name'
+console.log(john['first' + nameKey]);
+console.log(john['last' + nameKey]);
+
+// console.log(john.'last' + nameKey);
+
+const interestedIn = prompt('What do you want to know about John? Choose between firstName, lastName, age, job, and friends');
+
+if (john[interestedIn]) {
+    console.log(john[interestedIn]);
+} else {
+    console.log('Wrong request! Choose between firstName, lastName, age, job, and friends')
+}
+
+// adding property & value in the object
+john.location = 'U.S';
+john['twitter'] = '@johndoe';
+
+// Mini Challenge
+// John has 3 friends, and his best friend is called Mick!
+
+console.log(`${john.firstName} has ${john.friends.length} friends, and his best friend is ${john.friends[0]}`);
 
 
