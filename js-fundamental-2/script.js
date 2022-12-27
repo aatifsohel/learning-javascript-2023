@@ -294,13 +294,13 @@ console.log(john.calcAge());
 
 console.log(john.age);
 
-// Challenge 
+// Challenge
 
 console.log(john.summary());
 */
 
 // Challenge 03 - Objects
-
+/*
 const mark = {
     fullName: 'Mark Miller',
     weight: 78,
@@ -331,3 +331,12 @@ if (john.bmi > mark.bmi) {
 } else {
     console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})`);
 }
+*/
+
+// for Loop
+
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repition ${rep}!`);
+}
+
+
