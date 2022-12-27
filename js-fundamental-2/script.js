@@ -340,7 +340,7 @@ if (john.bmi > mark.bmi) {
 // }
 
 // looping arrays
-
+/*
 const johnArray = ['John Doe', 2037 - 1991, 'teacher', ['Mick', 'Dan', 'Joe'], true];
 
 const typeOfelement = [];
@@ -379,3 +379,23 @@ for (let i = 0; i < johnArray.length; i++) {
     if (typeof johnArray[i] === 'number') break;
     console.log(johnArray[i], typeof johnArray[i]);
 }
+*/
+
+// Looping backward and loops in loop
+
+// backward
+const johnArray = ['John Doe', 2037 - 1991, 'teacher', ['Mick', 'Dan', 'Joe'], true];
+
+for (let i = johnArray.length - 1; i >= 0; i--) {
+    console.log(johnArray[i]);
+}
+
+
+// Loop inside a loop
+for (let exercise = 1; exercise <= 3; exercise++) {
+    console.log(`----Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Lifting weight repetation ${rep}`);
+    }
+} 
