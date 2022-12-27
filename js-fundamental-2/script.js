@@ -335,8 +335,47 @@ if (john.bmi > mark.bmi) {
 
 // for Loop
 
-for (let rep = 1; rep <= 10; rep++) {
-    console.log(`Lifting weights repition ${rep}!`);
+// for (let rep = 1; rep <= 10; rep++) {
+//     console.log(`Lifting weights repition ${rep}!`);
+// }
+
+// looping arrays
+
+const johnArray = ['John Doe', 2037 - 1991, 'teacher', ['Mick', 'Dan', 'Joe'], true];
+
+const typeOfelement = [];
+
+for (let i = 0; i < johnArray.length; i++) {
+    //reading from array
+    console.log(johnArray[i], typeof johnArray[i]);
+
+    // writing to array
+    // typeOfelement[i] = typeof johnArray[i];
+    typeOfelement.push(typeof johnArray[i]);
 }
 
+console.log(typeOfelement);
 
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+    ages.push(2037 - years[i]);
+}
+
+console.log(ages);
+
+// continue and break
+console.log('----Only Strings----');
+
+for (let i = 0; i < johnArray.length; i++) {
+    if (typeof johnArray[i] !== 'string') continue;
+    console.log(johnArray[i], typeof johnArray[i]);
+}
+
+console.log('----Break with Number----');
+
+for (let i = 0; i < johnArray.length; i++) {
+    if (typeof johnArray[i] === 'number') break;
+    console.log(johnArray[i], typeof johnArray[i]);
+}
