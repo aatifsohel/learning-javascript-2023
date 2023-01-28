@@ -40,6 +40,18 @@ const restaurant = {
     },
 };
 
+// Nullish Coalescing Operator ??
+// restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+
+
+
+/*
 console.log('---- OR -----');
 console.log(3 || 'master');
 console.log('' || 'master');
@@ -67,3 +79,4 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+*/
