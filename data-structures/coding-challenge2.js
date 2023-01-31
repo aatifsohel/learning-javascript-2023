@@ -40,3 +40,27 @@ const game = {
         team2: 6.5,
     },
 };
+
+const displayGoal = game.scored;
+// console.log(displayGoal);
+
+// #1
+// for (const [index, key] of Object.entries(game.scored)) {
+//     console.log(`Goal ${Number(index) + 1}: ${key}`);
+// }
+
+// #2
+const totalOdds = Object.values(game.odds);
+// console.log(totalOdds);
+
+
+let sum = 0;
+for (let i = 0; i < totalOdds.length; i++) {
+    sum += totalOdds[i];
+}
+const avg = sum / totalOdds.length;
+console.log(sum);
+console.log(avg);
+
+// #3
+
