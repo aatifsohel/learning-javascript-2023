@@ -39,3 +39,34 @@ const restaurant = {
         console.log(otherIngredients);
     },
 };
+
+// iterable 
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Pasta', 'Risotto', 'Risotto']);
+console.log(ordersSet);
+
+// string set
+console.log(new Set('Hero'));
+console.log(ordersSet.size);
+
+// if set() has or not
+console.log(ordersSet.has('Pizza'));
+
+// add new item in the set()
+ordersSet.add('Garlic Bread');
+
+// delete a item from set()
+ordersSet.delete('Pasta');
+
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', "Waiter", 'Manager', 'Chef', 'Waiter'];
+
+const uniqueStaff = new Set(staff);
+console.log(uniqueStaff);
+
+console.log(new Set(staff).size);
+
+console.log([...new Set(staff)]);
