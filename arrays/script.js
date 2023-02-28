@@ -62,7 +62,7 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
-  containerMovements.innerHTML = ''
+  // containerMovements.innerHTML = '';
 
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -74,7 +74,7 @@ const displayMovements = function (movements) {
     </div>
     `;
 
-    containerMovements.insertAdjacentHTML('afterbegin', html)
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
 displayMovements(account1.movements);
@@ -167,3 +167,30 @@ currenciesUnique.forEach(function(value, _, map){
   console.log(`${value}: ${value}`);
 });
 */
+
+// TODO - Challenge 1
+
+const dogsJulia = [3, 5, 2, 12, 7];
+const dogsKate = [4, 1, 15, 8, 3];
+
+
+let age;
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = dogsJulia.slice();
+  dogsJuliaCorrected.splice(0,1);
+  dogsJuliaCorrected.splice(-2);
+  
+  const both = dogsJuliaCorrected.concat(dogsKate);
+  console.log(both);
+  both.forEach(function(dogAge, index, both) {
+    if (dogAge >= 3) {
+        console.log(`Dog number ${index + 1} is an adult, and is ${dogAge} years old`);
+      } else {
+          console.log(`Dog number ${index + 1} is still a puppy 🐶`);
+        }
+  })
+};
+
+// checkDogs(dogsJulia, dogsKate);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
