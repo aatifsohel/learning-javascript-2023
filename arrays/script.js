@@ -77,7 +77,13 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
+
 displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+}
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -87,6 +93,7 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 
+calcDisplayBalance(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -236,3 +243,10 @@ console.log(movements);
 // }, 0);
 const balance = movements.reduce((acc, curr) => acc + curr, 0);
 console.log(balance);
+
+// Maximum Value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max);
