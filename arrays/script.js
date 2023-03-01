@@ -218,13 +218,21 @@ const movementsDescription = movements.map((mov, i) => {
 });
 
 console.log(movementsDescription);
-*/
 
 const deposits = movements.filter(function (mov) {
   return mov > 0;
 });
 
-console.log(movements);
 console.log(deposits);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+*/
+
+console.log(movements);
+
+// const balance = movements.reduce(function(acc, curr, i, arr){
+//   console.log(`Iteration ${i}: ${acc}`);
+// return acc + curr;
+// }, 0);
+const balance = movements.reduce((acc, curr) => acc + curr, 0);
+console.log(balance);
