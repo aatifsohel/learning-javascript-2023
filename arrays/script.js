@@ -83,7 +83,7 @@ displayMovements(account1.movements);
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance} EUR`;
-}
+};
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -233,20 +233,37 @@ const deposits = movements.filter(function (mov) {
 console.log(deposits);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
-*/
 
 console.log(movements);
 
 // const balance = movements.reduce(function(acc, curr, i, arr){
-//   console.log(`Iteration ${i}: ${acc}`);
-// return acc + curr;
-// }, 0);
-const balance = movements.reduce((acc, curr) => acc + curr, 0);
-console.log(balance);
+  //   console.log(`Iteration ${i}: ${acc}`);
+  // return acc + curr;
+  // }, 0);
+  const balance = movements.reduce((acc, curr) => acc + curr, 0);
+  console.log(balance);
+  
+  // Maximum Value
+  const max = movements.reduce((acc, mov) => {
+    if (acc > mov) return acc;
+    else return mov;
+  }, movements[0]);
+  console.log(max);
+  */
 
-// Maximum Value
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov) return acc;
-  else return mov;
-}, movements[0]);
-console.log(max);
+// Coding Challenge 2
+
+const dogsJulia = [5, 2, 4, 1, 15, 8, 3];
+const dogsKate = [16, 6, 10, 5, 6, 1, 4];
+
+const calAverageHumanAge = function (arr) {
+  const dogsToHumanAge = arr.map(dogAge => dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4);
+  console.log(dogsToHumanAge);
+  const dogsToHumanAdult = dogsToHumanAge.filter(humanAge => humanAge >= 18);
+  console.log(dogsToHumanAdult);
+  const avgHumanAge = dogsToHumanAdult.reduce((acc, age) => acc + age, 0);
+    return avgHumanAge / dogsToHumanAdult.length;
+};
+
+console.log(calAverageHumanAge(dogsJulia));
+console.log(calAverageHumanAge(dogsKate));
