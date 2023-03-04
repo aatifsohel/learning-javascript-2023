@@ -62,7 +62,7 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
-  // containerMovements.innerHTML = '';
+  containerMovements.innerHTML = '';
 
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -99,7 +99,7 @@ const calcDisplaySummary = function (acc) {
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
-    acc.username = acc.owner.toLocaleLowerCase().split(' ').map(name => name[0]).join('');
+    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
   });
 };
 
@@ -117,7 +117,7 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-// Event handler
+// Event handlers
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   // prevent submission of form
@@ -125,7 +125,6 @@ btnLogin.addEventListener('click', function (e) {
 
   // find if user exist or not
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
-  // console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
@@ -156,6 +155,19 @@ btnTransfer.addEventListener('click', function (e) {
     updateUI(currentAccount);
   }
 });
+
+btnClose.addEventListener('click', function(e) {
+  e.preventDefault();
+  
+  if ( inputCloseUsername.value === currentAccount.username && currentAccount.pin === Number(inputClosePin.value)) {
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    
+    // Delete account
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
