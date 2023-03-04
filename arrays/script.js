@@ -385,3 +385,25 @@ const totalDepositsUSD = movements.filter(mov => mov > 0).map((mov, i, arr) => {
   const account = accounts.find(acc => acc.owner === 'Jessica Davis');
   console.log(account);
   */
+
+  // FLAT METHOD
+  const arr = [[1, 2, 3], [4,5,6], 7, 8];
+  console.log(arr.flat());
+  
+  const arrDeep = [[[1, 2,], 3], [4,[5,6]], 7, 8]
+  console.log(arrDeep.flat());
+
+  // overall account balance
+  // const accountMovements = accounts.map(acc => acc.movements);
+  // console.log(accountMovements);
+  // const allMovements = accountMovements.flat();
+  // console.log(allMovements);
+  // const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+  
+  // using chaining
+  const overallBalance = accounts.map(acc => acc.movements).flat().reduce((acc, mov) => acc + mov, 0);
+  console.log(overallBalance);
+  
+  // flatMap Method
+  const overallBalance2 = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0);
+  console.log(overallBalance2);
