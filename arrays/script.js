@@ -189,12 +189,12 @@ btnClose.addEventListener('click', function (e) {
 
 // Sorting Functionality
 let sorted = false;
-btnSort.addEventListener('click', function(e) {
+btnSort.addEventListener('click', function (e) {
   e.preventDefault;
   displayMovements(currentAccount.movements, !sorted);
   // flipping variable :-> true <-> false
   sorted = !sorted;
-})
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -237,7 +237,7 @@ console.log(letters);
 console.log([...arr, ...arr2]);
 
 // * Join Method
-console.log(letters.join(' - ')); 
+console.log(letters.join(' - '));
 */
 /*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -296,7 +296,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
   const dogsJuliaCorrected = dogsJulia.slice();
   dogsJuliaCorrected.splice(0,1);
   dogsJuliaCorrected.splice(-2);
-  
+
   const both = dogsJuliaCorrected.concat(dogsKate);
   console.log(both);
   both.forEach(function(dogAge, index, both) {
@@ -307,17 +307,17 @@ const checkDogs = function (dogsJulia, dogsKate) {
     }
   })
   };
-  
+
   // checkDogs(dogsJulia, dogsKate);
   checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
-  
-  
+
+
   const eurToUsd = 1.1;
-  // const movementsUSD = movements.map(function (mov) { 
-    //   return mov * eurToUsd; 
+  // const movementsUSD = movements.map(function (mov) {
+    //   return mov * eurToUsd;
     // });
     const movementsUSD = movements.map(mov => mov * eurToUsd);
-    
+
     console.log(movements);
 console.log(movementsUSD);
 
@@ -343,19 +343,19 @@ console.log(movements);
   // }, 0);
   const balance = movements.reduce((acc, curr) => acc + curr, 0);
   console.log(balance);
-  
+
   // Maximum Value
   const max = movements.reduce((acc, mov) => {
     if (acc > mov) return acc;
     else return mov;
   }, movements[0]);
   console.log(max);
-  
+
   // Coding Challenge 2
-  
+
   const dogsJulia = [5, 2, 4, 1, 15, 8, 3];
   const dogsKate = [16, 6, 10, 5, 6, 1, 4];
-  
+
   const calAverageHumanAge = function (arr) {
     const dogsToHumanAge = arr.map(dogAge => dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4);
   console.log(dogsToHumanAge);
@@ -376,7 +376,7 @@ const eurToUsd = 1.1;
 const totalDepositsUSD = movements.filter(mov => mov > 0).map((mov, i, arr) => {
   // console.log(arr);
   return mov * eurToUsd}).reduce((acc, mov) => acc + mov, 0);
-  
+
   console.log(totalDepositsUSD);
 }
 
@@ -420,7 +420,6 @@ console.log(overallBalance);
 // flatMap Method
 const overallBalance2 = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
-*/
 
 // Sorting with strings - mutates array
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
@@ -436,7 +435,7 @@ console.log(movements);
 // return something > 0, B, A (switch order)
 // Ascending order
 // movements.sort((a, b)=> {
-// if (a > b) return 1;
+  // if (a > b) return 1;
 // if (b > a) return -1;
 // });
 movements.sort((a, b) => a - b);
@@ -449,3 +448,37 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+*/
+
+// creating & filling arrays
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(arr);
+
+// empty array + fill method
+const x = new Array(7);
+console.log(x);
+
+x.fill(1, 3, 5);
+x.fill(1);
+console.log(x);
+
+// filling predefined arr
+arr.fill(23, 2, 6);
+console.log(arr);
+
+// Array.from
+const y = Array.from({length: 7}, () => 1);
+console.log(y);
+
+const z = Array.from({length: 7}, (_, i) => i + 1);
+console.log(z);
+
+
+labelBalance.addEventListener('click', function() {
+  const movementsUI = Array.from(document.querySelectorAll('.movements__value'), el => el.textContent.replace('€', ''));
+console.log(movementsUI);
+
+// second way
+const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+console.log(movementsUI2.map(el => el.textContent.replace('€', '')));
+})
