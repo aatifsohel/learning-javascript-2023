@@ -448,7 +448,6 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
-*/
 
 // creating & filling arrays
 const arr = [1, 2, 3, 4, 5, 6, 7];
@@ -476,9 +475,18 @@ console.log(z);
 
 labelBalance.addEventListener('click', function() {
   const movementsUI = Array.from(document.querySelectorAll('.movements__value'), el => el.textContent.replace('€', ''));
-console.log(movementsUI);
-
-// second way
-const movementsUI2 = [...document.querySelectorAll('.movements__value')];
-console.log(movementsUI2.map(el => el.textContent.replace('€', '')));
+  console.log(movementsUI);
+  
+  // second way
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+  console.log(movementsUI2.map(el => el.textContent.replace('€', '')));
 })
+*/
+
+// Coding challenge 4
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+  ];
