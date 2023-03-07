@@ -481,7 +481,6 @@ labelBalance.addEventListener('click', function() {
   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
   console.log(movementsUI2.map(el => el.textContent.replace('€', '')));
 })
-*/
 
 // Coding challenge 4
 const dogs = [
@@ -503,26 +502,63 @@ console.log(`Sarah's dog eating too ${dogSarah.curFood > dogSarah.recommendedFoo
 // #3
 const ownersEatingTooMuch = dogs.filter(dog => 
   dog.curFood > dog.recommendedFood).flatMap(dog => dog.owners);
-console.log(ownersEatingTooMuch);
+  console.log(ownersEatingTooMuch);
+  
+  const ownersEatingTooLittle = dogs.filter(dog => 
+    dog.curFood < dog.recommendedFood).flatMap(dog => dog.owners);
+    console.log(ownersEatingTooLittle);
+    
+    // #4
+    console.log(`${ownersEatingTooMuch.join(' and ')}'s dogs eat too much.`);
+    console.log(`${ownersEatingTooLittle.join(' and ')}'s dogs eat too little.`);
+    
+    // #5
+    console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
+    
+    // #6
+    const checkEatingOK = dog => dog.curFood > dog.recommendedFood * 0.9 && dog.curFood < dog.recommendedFood * 1.1
+    console.log(dogs.some(checkEatingOK));
+    
+    // #7
+    console.log(dogs.filter(checkEatingOK));
+    
+    // #8
+    const dogsSorted = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
+    console.log(dogsSorted);
+*/
 
-const ownersEatingTooLittle = dogs.filter(dog => 
-  dog.curFood < dog.recommendedFood).flatMap(dog => dog.owners);
-console.log(ownersEatingTooLittle);
+// Array Methods Practice
+// #1
+const bankDepositSum = accounts.flatMap(acc => acc.movements).filter(mov => mov > 0).reduce((acc, cur) => acc + cur, 0);
+console.log(bankDepositSum);
+
+// #2
+// const numDeposits1000 = accounts.flatMap(acc => acc.movements).filter(mov => mov > 1000).length;
+// const numDeposits1000 = accounts.flatMap(acc => acc.movements).reduce((count, cur) => cur >= 1000 ? count + 1 : count, 0);
+const numDeposits1000 = accounts.flatMap(acc => acc.movements).reduce((count, cur) => cur >= 1000 ? ++count : count, 0);
+console.log(numDeposits1000);
+
+let a = 10;
+console.log(++a);
+
+// #3 Reduce Method with objects / arrays
+const { deposits, withdrawals } = accounts.flatMap(acc => acc.movements).reduce((sums, cur) => {
+  // cur > 0 ? sums.deposits += cur : sums.withdrawals += cur;
+  sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+  return sums;
+}, { deposits: 0, withdrawals: 0 });
+console.log(deposits, withdrawals);
 
 // #4
-console.log(`${ownersEatingTooMuch.join(' and ')}'s dogs eat too much.`);
-console.log(`${ownersEatingTooLittle.join(' and ')}'s dogs eat too little.`);
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+const capitalize = str => str[0].toUpperCase() + str.slice(1);
 
-// #5
-console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
+const exceptions = ['a', 'an', 'and', 'the','but', 'or', 'on', 'in', 'with'];
 
-// #6
-const checkEatingOK = dog => dog.curFood > dog.recommendedFood * 0.9 && dog.curFood < dog.recommendedFood * 1.1
-console.log(dogs.some(checkEatingOK));
+const titleCase = title.toLowerCase().split(' ').map(word => exceptions.includes(word) ? word : capitalize(word)).join(' ');
+return capitalize(titleCase);
+};
 
-// #7
-console.log(dogs.filter(checkEatingOK));
-
-// #8
-const dogsSorted = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
-console.log(dogsSorted);
+console.log(convertTitleCase('This Is a Nice Title with an example'));
+console.log(convertTitleCase('why do not You undErstAnd thiS'));
