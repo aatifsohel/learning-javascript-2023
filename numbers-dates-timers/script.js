@@ -321,7 +321,6 @@ console.log((2.7).toFixed(0)); // string
 console.log((2.7).toFixed(3)); // string
 console.log((2.345).toFixed(2)); // string
 console.log(+(2.345).toFixed(2)); // string type coersion
-*/
 // Remainder operator (%)
 console.log(5 % 2);
 console.log(5 / 2);
@@ -338,3 +337,34 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
+*/
+
+// BigInt
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 2); // won't work
+
+console.log(1356465135164632131311313n);
+console.log(BigInt(13564651));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(13516311313135313513131n + 45464545313186453465n);
+// console.log(Math.sqrt(16n));
+
+const huge = 3122132164531646546531313n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == '20');
+
+console.log(huge + ' is REALLY big!!!');
+
+// Divisions
+console.log(10n / 3n);
+console.log(11n / 3n);
+console.log(10 / 3);
