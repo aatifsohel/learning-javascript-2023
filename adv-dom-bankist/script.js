@@ -68,9 +68,62 @@ header.prepend(message); // adds first child of selected element
 // header.after(message);
 
 // Deleting elements
-document.querySelector('.btn--close-cookie').addEventListener('click', function() {
-  message.remove();
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
 
-  // old way of removing element
-  // message.parentElement.removeChild(message);
-})
+    // old way of removing element
+    // message.parentElement.removeChild(message);
+  });
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+// using this will only work if you set the inline style through JS
+console.log(message.style.height);
+console.log(message.style.backgroundColor);
+
+// using this we can get styles
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+// changing property value
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.className);
+
+logo.alt = 'Beautiful minimalist logo';
+
+// Non standard attributes
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('company', 'Bankist');
+
+// Relative & absolute sources
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+// data attribute
+console.log(logo.dataset.versionNumber);
+
+// classes
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
+logo.classList.toggle('c');
+logo.classList.contains('c');
+
+// don't use this ↓
+// bcoz it overwrites existing class & allows only one class on an element
+logo.className = 'jonas';
