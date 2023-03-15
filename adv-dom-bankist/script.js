@@ -33,6 +33,7 @@ document.addEventListener('keydown', function (e) {
 /*
  **************************************************
  */
+/*
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -126,4 +127,38 @@ logo.classList.contains('c');
 
 // don't use this ↓
 // bcoz it overwrites existing class & allows only one class on an element
-logo.className = 'jonas';
+logo.className = 'jonas'; 
+*/
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  // current window size
+  // clientHeight & clientWidth excludes scrollbars (only space for content)
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
+
+  // old way
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  // modern way
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
