@@ -25,3 +25,15 @@ console.log(jane, matt);
 console.log(john instanceof Person);
 
 // Prototypes
+console.log(Person.prototype);
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+}
+
+john.calcAge();
+
+console.log(john.__proto__);
+console.log(john.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(john));
+console.log(Person.prototype.isPrototypeOf(Person));
