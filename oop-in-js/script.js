@@ -63,7 +63,6 @@ Array.prototype.unique = function ( ) {
 console.log(arr.unique());
 
 console.dir(x => x + 1);
-*/
 
 // Coding Challenge #1
 
@@ -87,3 +86,34 @@ const car2 = new Car('Mercedes', 95);
 
 console.log(car1.make);
 console.log(car2.make);
+*/
+
+// Class Declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}!`);
+  }
+}
+
+const jane = new PersonCl('Jane', 2000)
+console.log(jane);
+jane.calcAge();
+
+console.log(jane.__proto__ === PersonCl.prototype);
+
+jane.greet();
+
+// POINTS to remember
+// 1. classes are NOT hoisted
+// 2. classes are first-class citizens
+// 3. classes are executed in strict mode
