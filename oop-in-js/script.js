@@ -37,3 +37,29 @@ console.log(john.__proto__ === Person.prototype);
 
 console.log(Person.prototype.isPrototypeOf(john));
 console.log(Person.prototype.isPrototypeOf(Person));
+
+console.log(john.hasOwnProperty('firstName'));
+console.log(john.hasOwnProperty('species'));
+
+console.log(john.__proto__);
+// Object.prototype (top of prototype chain) ↓
+console.log(john.__proto__.__proto__);
+console.log(john.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+const arr = [1, 2, 3, 3, 5, 5, 1, 6];
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+// Don't create something like this in real time - bad practice
+Array.prototype.unique = function ( ) {
+  // return unique item from an array 
+  return [...new Set(this)];
+}
+console.log(arr.unique());
+
+console.dir(x => x + 1);
+
