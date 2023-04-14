@@ -1,6 +1,5 @@
 'use strict';
 
-/*
 const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
@@ -25,14 +24,24 @@ console.log(jane, matt);
 
 console.log(john instanceof Person);
 
+Person.hey = function () {
+  console.log('Hey there 👋');
+  console.log(this);
+}
+
+Person.hey();
+// john.hey();
+
+
 // Prototypes
 console.log(Person.prototype);
 Person.prototype.calcAge = function () {
   console.log(2037 - this.birthYear);
-}
+};
 
 john.calcAge();
 
+/*
 console.log(john.__proto__);
 console.log(john.__proto__ === Person.prototype);
 
@@ -86,14 +95,15 @@ const car2 = new Car('Mercedes', 95);
 
 console.log(car1.make);
 console.log(car2.make);
-
+*/
 // Class Declaration
 class PersonCl {
   constructor(firstName, birthYear) {
     this.firstName = firstName;
     this.birthYear = birthYear;
   }
-
+  
+  // instance method
   // Methods will be added to .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -102,30 +112,47 @@ class PersonCl {
   greet() {
     console.log(`Hey ${this.firstName}!`);
   }
+
+  // set a property that already exists
+  set fullName (name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+  static hey() {
+    console.log(`Hey there 👋`);
+    console.log(this);
+  }
 }
 
-const jane = new PersonCl('Jane', 2000)
-console.log(jane);
-jane.calcAge();
+const janny = new PersonCl('Janny', 2000);
+console.log(janny);
+janny.calcAge();
 
-console.log(jane.__proto__ === PersonCl.prototype);
+console.log(janny.__proto__ === PersonCl.prototype);
 
-jane.greet();
+janny.greet();
+
+PersonCl.hey();
 
 // POINTS to remember
 // 1. classes are NOT hoisted
 // 2. classes are first-class citizens
 // 3. classes are executed in strict mode
-*/
-
+/*
 const account = {
   owner: 'john',
   movements: [200, 530, 120, 300],
-
+  
   get latest() {
     return this.movements.slice(-1).pop();
   },
-
+  
   set latest(mov) {
     this.movements.push(mov)
   }
@@ -139,3 +166,4 @@ console.log();
 console.log();
 
 console.log(ac);
+*/
