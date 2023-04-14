@@ -86,7 +86,6 @@ const car2 = new Car('Mercedes', 95);
 
 console.log(car1.make);
 console.log(car2.make);
-*/
 
 // Class Declaration
 class PersonCl {
@@ -99,7 +98,7 @@ class PersonCl {
   calcAge() {
     console.log(2037 - this.birthYear);
   }
-
+  
   greet() {
     console.log(`Hey ${this.firstName}!`);
   }
@@ -117,3 +116,26 @@ jane.greet();
 // 1. classes are NOT hoisted
 // 2. classes are first-class citizens
 // 3. classes are executed in strict mode
+*/
+
+const account = {
+  owner: 'john',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov)
+  }
+}
+
+console.log(account.latest);
+account.latest = 50;
+console.log(account.movements);
+
+console.log();
+console.log();
+
+console.log(ac);
