@@ -192,7 +192,6 @@ const sarah = Object.create(PersonProto)
 
 sarah.init('Sarah', 1979);
 sarah.calcAge();
-*/
 
 // Coding Challenge #2
 
@@ -201,17 +200,17 @@ class CarCl {
     this.make = make;
     this.speed = speed;
   }
-
+  
   accelerate() {
     this.speed += 10;
     console.log(this.speed);
   }
-
+  
   brake() {
     this.speed -= 5;
     console.log(this.speed);
   }
-
+  
   get speedUS() {
     return this.speed / 1.6;
   }
@@ -228,3 +227,51 @@ ford.brake();
 
 ford.speedUS = 50;
 console.log(ford);
+*/
+
+//* Inheritance between classes: Constructor functions
+
+// First Constructor function i.e. class
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+// Add method to Person prototype
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+// create Second constructor function with additional details from Person constructor
+const Student = function (firstName, birthYear, course) {
+  // add Person constructor detail into this Student constructor
+  Person.call(this, firstName, birthYear);
+
+  // Additional detail
+  this.course = course;
+};
+
+//* Linking Student Prototype to Person Protype to inherit addition methods & properties
+Student.prototype = Object.create(Person.prototype);
+
+// create new methods on Student Prototype
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+console.log(mike);
+
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+
+// Important: pointing back constructor to Student from Person
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
