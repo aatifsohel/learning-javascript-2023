@@ -227,7 +227,6 @@ ford.brake();
 
 ford.speedUS = 50;
 console.log(ford);
-*/
 
 //* Inheritance between classes: Constructor functions
 
@@ -246,7 +245,7 @@ Person.prototype.calcAge = function () {
 const Student = function (firstName, birthYear, course) {
   // add Person constructor detail into this Student constructor
   Person.call(this, firstName, birthYear);
-
+  
   // Additional detail
   this.course = course;
 };
@@ -317,3 +316,47 @@ console.log(tesla);
 
 tesla.brake();
 tesla.accelerate();
+*/
+
+// Parent Class - using constructor function
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+// Parent Class - Methods
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+// Child Class - using constructor function
+const Student = function (firstName, birthYear, course) {
+  // Inherit Parent Class - Properties
+  // We use call() method because we are pointing `this` keyword to Student class. If we use regular function call like Person(firstName, birthYear) then `this` keyword points to undefined.
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Link Prototype - Change Student.prototype to Person.prototype
+// Object.create() will return empty object {}
+Student.prototype = Object.create(Person.prototype);
+
+// Child Class - Method
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+// Create object i.e. mike with new operator
+const mike = new Student('Mike', 1990, 'Computer Science');
+
+mike.introduce();
+
+mike.calcAge();
+
+// Confirming that our prototype chain works:
+console.log(mike instanceof Student); // true
+console.log(mike instanceof Person); // true
+console.log(mike instanceof Object); // true
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
