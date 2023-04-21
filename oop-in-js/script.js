@@ -316,7 +316,6 @@ console.log(tesla);
 
 tesla.brake();
 tesla.accelerate();
-*/
 
 // Parent Class - using constructor function
 const Person = function (firstName, birthYear) {
@@ -360,3 +359,53 @@ console.log(mike instanceof Object); // true
 
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
+*/
+
+//* Inheritance between classes - ES6 Classes
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // instance method
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}!`);
+  }
+
+  // set a property that already exists
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+  static hey() {
+    console.log(`Hey there 👋`);
+    console.log(this);
+  }
+}
+
+// To implement inheretance between ES6 classes
+// We only need 2 things - extends property & super() class
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // This needs to happen first!
+    // Because it enables `this` keyword in constructor
+    super(fullName, birthYear);
+
+    // Extra property for StudentCl
+    // this.course = course;
+  }
+}
+
+const martha = new StudentCl('Martha Jones', 2012);
