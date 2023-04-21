@@ -359,7 +359,6 @@ console.log(mike instanceof Object); // true
 
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
-*/
 
 //* Inheritance between classes - ES6 Classes
 class PersonCl {
@@ -373,7 +372,7 @@ class PersonCl {
   calcAge() {
     console.log(2037 - this.birthYear);
   }
-
+  
   greet() {
     console.log(`Hey ${this.firstName}!`);
   }
@@ -383,11 +382,11 @@ class PersonCl {
     if (name.includes(' ')) this._fullName = name;
     else alert(`${name} is not a full name!`);
   }
-
+  
   get fullName() {
     return this._fullName;
   }
-
+  
   // Static method
   static hey() {
     console.log(`Hey there 👋`);
@@ -402,10 +401,52 @@ class StudentCl extends PersonCl {
     // This needs to happen first!
     // Because it enables `this` keyword in constructor
     super(fullName, birthYear);
-
+    
     // Extra property for StudentCl
     // this.course = course;
   }
 }
 
 const martha = new StudentCl('Martha Jones', 2012);
+*/
+
+//* Inheritance between classes - Object.create
+
+// Parent Object -
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+// Child Object -
+const StudentProto = Object.create(PersonProto);
+
+// Create a init method on child class
+StudentProto.init = function (firstName, birthYear, course) {
+  // Inherit from Parent Object
+  PersonProto.init.call(this, firstName, birthYear);
+
+  // Additional property for Child Object
+  this.course = course;
+};
+
+// Method on Child Object
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+// Create empty obj {}
+const jay = Object.create(StudentProto);
+
+jay.init('Jay', 2010, 'Computer Science');
+
+jay.introduce();
+jay.calcAge();
