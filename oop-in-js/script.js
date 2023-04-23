@@ -193,7 +193,7 @@ const sarah = Object.create(PersonProto)
 sarah.init('Sarah', 1979);
 sarah.calcAge();
 
-// Coding Challenge #2
+//* Coding Challenge #2
 
 class CarCl {
   constructor(make, speed) {
@@ -275,7 +275,7 @@ console.log(mike instanceof Object);
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
 
-//* Coding Challenge
+//* Coding Challenge 3
 
 const Car = function (make, speed) {
   this.make = make;
@@ -449,16 +449,15 @@ jay.init('Jay', 2010, 'Computer Science');
 
 jay.introduce();
 jay.calcAge();
-*/
 
 class Account {
   // 1 - public fields (instances)
   locale = navigator.language;
-
+  
   // 2 - private fields (instances)
   #movements = [];
   #pin;
-
+  
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
@@ -466,16 +465,16 @@ class Account {
     this.#pin = pin;
     // this._movements = [];
     // this.locale = navigator.language;
-
+    
     console.log(`Thanks for opening an account, ${owner}`);
   }
-
+  
   // 3 - Public methods
   // Public Interface of this object
   getMovements() {
     return this.#movements;
   }
-
+  
   deposit(val) {
     this.#movements.push(val);
     return this;
@@ -493,28 +492,78 @@ class Account {
         console.log(`Loan approved`);
         return this;
       }
+    }
+    
+    static helper () {
+      console.log('helper');
+    }
+    
+    // 4 - Private methods
+    // #approveLoan(val) {
+      _approveLoan(val) {
+        return true;
+      }
+    }
+    
+    const acc1 = new Account('Jonas', 'EUR', 1111);
+    
+    acc1.deposit(250);
+    acc1.withdraw(140);
+    acc1.requestLoan(1000);
+    
+    console.log(acc1.getMovements());
+    console.log(acc1);
+    
+    // chaining
+    acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+    console.log(acc1.getMovements());
+    */
+
+//* Coding Challenge 4
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
   }
 
-  static helper () {
-    console.log('helper');
+  accelerate() {
+    this.speed += 10;
+    console.log(this.speed);
+    return this;
   }
 
-  // 4 - Private methods
-  // #approveLoan(val) {
-  _approveLoan(val) {
-    return true;
+  brake() {
+    this.speed -= 5;
+    console.log(this.speed);
+    return this;
+  }
+}
+class EVCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(`Speed: ${this.speed}, Charge: ${this.#charge};`);
+    return this;
   }
 }
 
-const acc1 = new Account('Jonas', 'EUR', 1111);
-
-acc1.deposit(250);
-acc1.withdraw(140);
-acc1.requestLoan(1000);
-
-console.log(acc1.getMovements());
-console.log(acc1);
-
-// chaining
-acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
-console.log(acc1.getMovements());
+const revian = new EVCl('Rivian', 120, 23);
+console.log(revian);
+// console.log(revian.#charge);
+revian
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .brake()
+  .chargeBattery(50)
+  .accelerate();
