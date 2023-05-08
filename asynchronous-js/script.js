@@ -4,6 +4,7 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
+/*
 // old way of doing AJAX
 
 const renderCountry = function (data, className = '') {
@@ -97,3 +98,8 @@ setTimeout(() => {
     }, 1000);
   }, 1000);
 }, 1000);
+*/
+
+// Modern Way
+const request = fetch(`https://restcountries.com/v3.1/name/usa`);
+console.log(request);
