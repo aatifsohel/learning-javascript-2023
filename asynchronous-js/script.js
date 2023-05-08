@@ -4,8 +4,6 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
-/*
-// old way of doing AJAX
 
 const renderCountry = function (data, className = '') {
   // Destructuring
@@ -24,9 +22,9 @@ const renderCountry = function (data, className = '') {
   //   console.log(Object.values(languages)[0]);
 
   const html = `
-    <article class="country ${className}">
-          <img class="country__img" src="${Object.values(flags)[0]}" />
-          <div class="country__data">
+  <article class="country ${className}">
+  <img class="country__img" src="${Object.values(flags)[0]}" />
+  <div class="country__data">
             <h3 class="country__name">${common}</h3>
             <h4 class="country__region">${region}</h4>
             <p class="country__row"><span>👫</span>${(
@@ -39,21 +37,23 @@ const renderCountry = function (data, className = '') {
               Object.values(currencies)[0].name
             }
             </p>
-          </div>
-        </article>
-    `;
+            </div>
+            </article>
+            `;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
 
-const getCountryAndNeighbour = function (country) {
-  // AJAX call country 1
-  const request = new XMLHttpRequest();
-  request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
-  request.send();
+/*
+    const getCountryAndNeighbour = function (country) {
+    // old way of doing AJAX
+    // AJAX call country 1
+    const request = new XMLHttpRequest();
+    request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
+    request.send();
 
-  request.addEventListener('load', function () {
+    request.addEventListener('load', function () {
     //   console.log(this.responseText);
 
     const [data] = JSON.parse(this.responseText);
@@ -102,4 +102,27 @@ setTimeout(() => {
 
 // Modern Way
 const request = fetch(`https://restcountries.com/v3.1/name/usa`);
-console.log(request);
+// console.log(request);
+
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       // json() available on all response (resolved value) object that is coming from fetch() function
+//       // json() is also async function, so it will return a promise
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+
+// simplified code of above example using arrow function
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]));
+};
+
+getCountryData('usa');
