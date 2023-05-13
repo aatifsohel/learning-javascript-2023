@@ -42,14 +42,15 @@ const renderCountry = function (data, className = '') {
             `;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
 
+//* Old way using XMLHttpRequest()
 /*
     const getCountryAndNeighbour = function (country) {
     // old way of doing AJAX
@@ -105,37 +106,47 @@ setTimeout(() => {
 }, 1000);
 */
 
-// Modern Way
+//* Modern Way using fetch()
+/*
 const request = fetch(`https://restcountries.com/v3.1/name/usa`);
-// console.log(request);
+console.log(request);
 
-// const getCountryData = function (country) {
-//   fetch(`https://restcountries.com/v3.1/name/${country}`)
-//     .then(function (response) {
-//       console.log(response);
-//       // json() available on all response (resolved value) object that is coming from fetch() function
-//       // json() is also async function, so it will return a promise
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//       renderCountry(data[0]);
-//     });
-// };
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(function (response) {
+      console.log(response);
+      // json() available on all response (resolved value) object that is coming from fetch() function
+      // json() is also async function, so it will return a promise
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      renderCountry(data[0]);
+    });
+};
 
 // simplified code of above example using arrow function
 const getCountryData = function (country) {
   // country 1
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(
-      response => response.json()
+      response => {
+        console.log(response.ok);
+
+        // first promise rejection: Throwing error if 'response.ok' is false and displaying status code like 404, 200 etc.....
+        if (!response.ok)
+          throw new Error(`Country not found (${response.status})`);
+
+        return response.json();
+      }
       // error handling
       // err => alert(err)
     )
     .then(
       data => {
         renderCountry(data[0]);
-        const neighbour = data[0].borders[0];
+        // const neighbour = data[0].borders[0];
+        const neighbour = 'ljljl';
         if (!neighbour) return;
 
         // Country 2
@@ -144,9 +155,52 @@ const getCountryData = function (country) {
       // err => alert(err)
     )
     .then(
-      response => response.json()
+      response => {
+        // first promise rejection: Throwing error if 'response.ok' is false and displaying status code like 404, 200 etc.....
+        if (!response.ok)
+          throw new Error(`Country not found (${response.status})`);
+        return response.json();
+      }
       // err => alert(err)
     )
+    .then(data => renderCountry(data[0], `neighbour`))
+    .catch(err => {
+      console.error(`${err} 🔥🔥🔥`);
+      renderError(`Something went wrong 🔥🔥🔥 ${err.message}. Try Again!`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
+};
+*/
+
+// using DRY method for clean code (helper function)
+// this function will return a promise
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    // promise rejection: Throwing error if 'response.ok' is false and displaying status code like 404, 200 etc.....
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+
+    return response.json();
+  });
+};
+
+const getCountryData = function (country) {
+  // country 1
+  getJSON(`https://restcountries.com/v3.1/name/${country}`, 'Country not found')
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+      console.log(neighbour);
+
+      if (!neighbour) throw new Error('No neighbour found!');
+
+      // Country 2
+      return getJSON(
+        `https://restcountries.com/v3.1/alpha/${neighbour}`,
+        'Country not found'
+      );
+    })
     .then(data => renderCountry(data[0], `neighbour`))
     .catch(err => {
       console.error(`${err} 🔥🔥🔥`);
@@ -160,3 +214,7 @@ const getCountryData = function (country) {
 btn.addEventListener('click', function () {
   getCountryData('usa');
 });
+// getCountryData('australia');
+
+// Wrong data - first promise rejection
+// getCountryData('kjjos');
