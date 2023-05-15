@@ -4,7 +4,7 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
-
+/*
 const renderCountry = function (data, className = '') {
   // Destructuring
   const {
@@ -49,7 +49,7 @@ const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
   // countriesContainer.style.opacity = 1;
 };
-
+*/
 //* Old way using XMLHttpRequest()
 /*
     const getCountryAndNeighbour = function (country) {
@@ -173,7 +173,7 @@ const getCountryData = function (country) {
     });
 };
 */
-
+/*
 // using DRY method for clean code (helper function)
 // this function will return a promise
 const getJSON = function (url, errorMsg = 'Something went wrong') {
@@ -232,3 +232,48 @@ Promise.resolve('Resolve promise 2').then(res => {
 });
 
 console.log('Test end');
+*/
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Lottery draw is happening 🔮');
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve('You WIN 🤑');
+    } else {
+      reject(new Error('You lost your money 😭'));
+    }
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+// In most of the time, we only consume prmises. We usually build promises to wrap old callbacks based functions  into promises and this process is called promisifying (promisification)
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(1)
+  .then(() => {
+    console.log('1 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('2 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('3 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('4 second passed');
+    return wait(1);
+  })
+  .then(() => console.log('5 second passed'));
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
