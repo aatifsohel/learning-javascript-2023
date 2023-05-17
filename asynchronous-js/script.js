@@ -4,7 +4,6 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
-/*
 const renderCountry = function (data, className = '') {
   // Destructuring
   const {
@@ -42,14 +41,14 @@ const renderCountry = function (data, className = '') {
             `;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
-*/
+
 //* Old way using XMLHttpRequest()
 /*
     const getCountryAndNeighbour = function (country) {
@@ -232,7 +231,6 @@ Promise.resolve('Resolve promise 2').then(res => {
 });
 
 console.log('Test end');
-*/
 
 const lotteryPromise = new Promise(function (resolve, reject) {
   console.log('Lottery draw is happening 🔮');
@@ -257,23 +255,70 @@ const wait = function (seconds) {
 };
 
 wait(1)
-  .then(() => {
-    console.log('1 second passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('2 second passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('3 second passed');
-    return wait(1);
-  })
-  .then(() => {
+.then(() => {
+  console.log('1 second passed');
+  return wait(1);
+})
+.then(() => {
+  console.log('2 second passed');
+  return wait(1);
+})
+.then(() => {
+  console.log('3 second passed');
+  return wait(1);
+})
+.then(() => {
     console.log('4 second passed');
     return wait(1);
   })
   .then(() => console.log('5 second passed'));
+  
+  Promise.resolve('abc').then(x => console.log(x));
+  Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+  */
 
-Promise.resolve('abc').then(x => console.log(x));
-Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    // same as above ↓↓↓
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+// getPosition().then(pos => console.log(pos));
+
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      return fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&accept-language=english&format=json`
+      );
+    })
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Problem with nominatim (${response.status})`);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.address.city}, ${data.address.country}`);
+
+      // another request
+      return fetch(
+        `https://restcountries.com/v3.1/name/${data.address.country}`
+      );
+    })
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
+      return response.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => console.error(`${err.message} 💥💥💥`));
+};
+
+btn.addEventListener('click', whereAmI);
