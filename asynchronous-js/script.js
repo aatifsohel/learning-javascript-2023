@@ -277,6 +277,7 @@ wait(1)
   Promise.reject(new Error('Problem!')).catch(x => console.error(x));
   */
 
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     // navigator.geolocation.getCurrentPosition(
@@ -322,3 +323,32 @@ const whereAmI = function () {
 };
 
 btn.addEventListener('click', whereAmI);
+*/
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function () {
+  // geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(
+    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&accept-language=english&format=json`
+  );
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  // Country data
+  const response = await fetch(
+    `https://restcountries.com/v3.1/name/${dataGeo.address.country}`
+  );
+  const data = await response.json();
+  console.log(data);
+  renderCountry(data[0]);
+};
+whereAmI();
+console.log('first');
