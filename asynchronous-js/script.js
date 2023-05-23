@@ -342,22 +342,48 @@ const whereAmI = async function () {
     );
     if (!resGeo.ok) throw new Error(`Problem getting location data`);
     const dataGeo = await resGeo.json();
-    console.log(dataGeo);
 
     // Country data
     const response = await fetch(
       `https://restcountries.com/v3.1/name/${dataGeo.address.country}`
+      // create an error ↓↓↓
+      // `https://restcountries.com/v3.1/name/${dataGeo.address.countryddd}`
     );
     if (!response.ok) throw new Error(`Problem getting country`);
     const data = await response.json();
-    console.log(data);
     renderCountry(data[0]);
+
+    // if any error occurs in above line then 'return' will not work because after error it will immediately go to 'catch()' block.
+    return `You are in ${dataGeo.address.city}, ${dataGeo.address.country}`;
   } catch (err) {
-    console.error(err);
     renderCountry(`💥💥💥 ${err.message}`);
     renderError(`${err.message} 💥💥💥`);
+
+    // Reject promise returned from async function
+    throw err;
   }
 };
 
-whereAmI();
-console.log('first');
+console.log('1: WILL GET LOCATION');
+// const city = whereAmI();
+// console.log(city);
+
+// this mixes old and new method - async and then() method: which is not good 😬
+// whereAmI()
+//   .then(city => console.log(`2: ${city}`))
+//   .catch(err => console.error(`2: ${err.message}`))
+//   .finally(() => {
+//     // no matter it will execute
+//     console.log('3: FINISHED GETTING LOCATION');
+//   });
+
+// using IIFE to avoid mixing old & new method - only using async function
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.error(`2: ${err.message}`);
+  }
+  console.log('3: FINISHED GETTING LOCATION');
+})();
