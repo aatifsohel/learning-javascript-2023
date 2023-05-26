@@ -390,6 +390,7 @@ console.log('1: WILL GET LOCATION');
 })();
 */
 
+/*
 const getJSON = function (url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
@@ -398,7 +399,6 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
   });
 };
 
-/*
 const get3Countries = async function (c1, c2, c3) {
   try {
     // these are running one after another
@@ -421,7 +421,7 @@ const get3Countries = async function (c1, c2, c3) {
 
 get3Countries('portugal', 'canada', 'tanzania');
 */
-
+/*
 // Promise.race
 (async function () {
   const res = await Promise.race([
@@ -460,3 +460,4 @@ Promise.any([
   Promise.reject('Error'),
   Promise.resolve('Anothe success'),
 ]).then(res => console.log(res));
+*/
