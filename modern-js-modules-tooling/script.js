@@ -2,6 +2,7 @@
 // import { addToCart, totalPrice as price, tq } from './shoppingCart.js';
 // addToCart('bread', 5);
 // console.log(price, tq);
+/*
 console.log('Importing module');
 
 // everything as shopping cart
@@ -37,3 +38,36 @@ lastPost.then(last => console.log(last));
 
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
+*/
+
+const shoppingCart2 = (function () {
+  const cart = [];
+  const shippingCost = 10;
+  const totalPrice = 237;
+  const totalQuantity = 23;
+
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} added to cart`);
+  };
+
+  const orderStock = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} ordered from supplier`);
+  };
+
+  // only returned values will be accessible
+  return {
+    addToCart,
+    cart,
+    totalPrice,
+    totalQuantity,
+  };
+})();
+
+shoppingCart2.addToCart('apple', 4);
+shoppingCart2.addToCart('pizza', 2);
+
+console.log(shoppingCart2);
+// accessing private property - undefined
+console.log(shoppingCart2.shippingCost);
