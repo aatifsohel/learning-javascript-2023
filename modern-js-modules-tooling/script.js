@@ -40,6 +40,7 @@ const lastPost2 = await getLastPost();
 console.log(lastPost2);
 */
 
+/*
 const shoppingCart2 = (function () {
   const cart = [];
   const shippingCost = 10;
@@ -71,3 +72,14 @@ shoppingCart2.addToCart('pizza', 2);
 console.log(shoppingCart2);
 // accessing private property - undefined
 console.log(shoppingCart2.shippingCost);
+*/
+
+// Common JS Modules
+// Export
+export function addToCart(product, quantity) {
+  cart.push({ product, quantity });
+  console.log(`${quantity} ${product} added to cart`);
+}
+
+// Import
+const { addToCart } = require('./shoppingCart.js');
