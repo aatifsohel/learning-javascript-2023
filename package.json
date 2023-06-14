@@ -1,12 +1,12 @@
 {
-  "name": "modern-js-modules-tooling",
+  "name": "starter",
   "version": "1.0.0",
   "description": "",
-  "main": "clean.js",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Aatif S",
+  "author": "Aatif",
   "license": "ISC",
   "dependencies": {
     "lodash-es": "^4.17.21"
